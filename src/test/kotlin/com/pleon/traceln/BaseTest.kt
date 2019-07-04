@@ -35,7 +35,7 @@ import org.junit.jupiter.api.extension.ExtendWith
  */
 @Tag("Base")
 @ExtendWith(MockKExtension::class)
-internal class BaseTest {
+class BaseTest {
 
     class User(val name: String, val age: Int)
 
@@ -47,7 +47,7 @@ internal class BaseTest {
     @SpyK var spiedUser = User("Hey", 30)
 
     @BeforeEach
-    internal fun setUp() {
+    fun setUp() {
         println("Setup method called")
         every { mockedUser.name } returns "Mahdi"
         every { spiedUser.name } returns "Hello!"
@@ -115,7 +115,7 @@ internal class BaseTest {
      * `unmockkAll` is to revert mocks of singleton objects.
      */
     @AfterEach
-    internal fun tearDown() {
+    fun tearDown() {
         println("Teardown method called")
         unmockkAll()
     }
