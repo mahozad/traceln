@@ -39,14 +39,12 @@ internal class BaseTest {
 
     class User(val name: String, val age: Int)
 
-    @MockK
-    lateinit var mockedUser: User
+    @MockK lateinit var mockedUser: User
 
     /**
-     * Spy allows mocking only a particular part of some object.
+     * Spy allows mocking only a particular part of some **existing object**.
      */
-    @SpyK
-    var spiedUser = User("Hey", 30)
+    @SpyK var spiedUser = User("Hey", 30)
 
     @BeforeEach
     internal fun setUp() {
@@ -55,9 +53,8 @@ internal class BaseTest {
         every { spiedUser.name } returns "Hello!"
     }
 
-    @Disabled
-    @Test
-    fun testMain() {
+    @Disabled @Test
+    fun testIgnored() {
         assertThat(100).isEqualTo(101 - 2 + 1)
     }
 
