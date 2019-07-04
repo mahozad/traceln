@@ -1,13 +1,10 @@
 package com.pleon.traceln
 
-import io.mockk.every
+import io.mockk.*
 import io.mockk.impl.annotations.MockK
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.impl.annotations.SpyK
 import io.mockk.junit5.MockKExtension
-import io.mockk.mockkObject
-import io.mockk.unmockkAll
-import io.mockk.verify
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.extension.ExtendWith
@@ -78,11 +75,11 @@ class BaseTest {
      * skip specifying behavior for each case, while still allow to stub things you need.
      */
     @Test
-    fun testMockMethodCalled(@RelaxedMockK user: User) {
-        println(user.age)
+    fun testRelaxedMockAndNotCalled(@RelaxedMockK user1: User, @MockK user2: User) {
+        println(user1.age)
 
-        verify { user.age }
-        // verify { user.name wasNot Called }
+        verify { user1.age }
+        verify { user2 wasNot Called }
     }
 
     /**
