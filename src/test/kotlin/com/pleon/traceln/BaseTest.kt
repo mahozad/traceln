@@ -112,7 +112,7 @@ internal class BaseTest {
     }
 
     /**
-     * unmockkAll is to revert mocks of singleton objects.
+     * `unmockkAll` is to revert mocks of singleton objects.
      */
     @AfterEach
     internal fun tearDown() {

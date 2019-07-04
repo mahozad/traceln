@@ -15,9 +15,9 @@ repositories {
  * This block is to tell gradle to use its native junit platform. We can also specify some useful
  * things such as excluded tags, etc. here. Currently seems to be not needed.
  */
-//tasks.named<Test>("test") {
-//    useJUnitPlatform()
-//}
+/*tasks.named<Test>("test") {
+    useJUnitPlatform()
+}*/
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
