@@ -33,7 +33,7 @@ import org.junit.jupiter.api.extension.ExtendWith
  * We extend the junit runner with `MockKExtension::class` so we do not have to initialize MockK
  * in the setup method like this: `MockKAnnotations.init(this)`
  */
-@Tag("Main")
+@Tag("Base")
 @ExtendWith(MockKExtension::class)
 internal class BaseTest {
 
