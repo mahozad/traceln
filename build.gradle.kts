@@ -21,7 +21,6 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    implementation("net.sf.jmimemagic:jmimemagic:0.1.5")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.3.40")
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.0")
     testImplementation("org.assertj:assertj-core:3.12.2")
