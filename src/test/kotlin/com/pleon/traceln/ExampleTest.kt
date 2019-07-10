@@ -6,7 +6,10 @@ import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.impl.annotations.SpyK
 import io.mockk.junit5.MockKExtension
 import org.assertj.core.api.Assertions.assertThat
-import org.junit.jupiter.api.*
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Tag
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
 /**
@@ -32,7 +35,7 @@ import org.junit.jupiter.api.extension.ExtendWith
  */
 @Tag("Base")
 @ExtendWith(MockKExtension::class)
-class BaseTest {
+class ExampleTest {
 
     class User(val name: String, val age: Int)
 
@@ -50,10 +53,10 @@ class BaseTest {
         every { spiedUser.name } returns "Hello!"
     }
 
-    @Disabled @Test
-    fun testIgnored() {
+    /*@Disabled @Test
+    fun ignore() {
         assertThat(100).isEqualTo(101 - 2 + 1)
-    }
+    }*/
 
     @Test
     fun testMockAsField() {
