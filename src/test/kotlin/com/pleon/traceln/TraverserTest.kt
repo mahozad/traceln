@@ -58,6 +58,19 @@ class TraverserTest {
         assertThat(traverser.next()).isEqualTo(Path.of(javaClass.getResource("/directory/sub-dir-2/inner-sub-dir/file5.txt").toURI()).toFile())
     }
 
+   @Test
+    fun withDirectoryAsRootSixthNextShouldReturnImageFile() {
+        val traverser = Traverser(dirAsRoot)
+
+        traverser.next()
+        traverser.next()
+        traverser.next()
+        traverser.next()
+        traverser.next()
+
+        assertThat(traverser.next()).isEqualTo(Path.of(javaClass.getResource("/directory/sub-dir-2/star.png").toURI()).toFile())
+    }
+
     @Test
     fun withFileAsRootHasNextShouldReturnTrue() {
         val traverser = Traverser(fileAsRoot)
