@@ -1,7 +1,9 @@
 package com.pleon.traceln
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
+import java.nio.file.Files
 import java.nio.file.Path
 
 class TraverserTest {
@@ -58,7 +60,7 @@ class TraverserTest {
         assertThat(traverser.next()).isEqualTo(Path.of(javaClass.getResource("/directory/sub-dir-2/inner-sub-dir/file5.txt").toURI()).toFile())
     }
 
-   @Test
+    @Test
     fun withDirectoryAsRootSixthNextShouldReturnImageFile() {
         val traverser = Traverser(dirAsRoot)
 
@@ -95,9 +97,23 @@ class TraverserTest {
     }
 
     @Test
+    fun emptyRootNextShouldThrowException() {
+        // Empty folders are not copied to the build output folder, so we have to create it manually
+        Files.createDirectory(Path.of("${System.getProperty("user.dir")}/empty"))
+        val traverser = Traverser(Path.of("${System.getProperty("user.dir")}/empty"))
+
+        assertThat(traverser.hasNext()).isEqualTo(false)
+    }
+
+    @Test
     fun getNextFile() {
         val traverser = Traverser(dirAsRoot)
 
         assertThat(traverser.next()).isEqualTo(fileAsRoot.toFile())
+    }
+
+    @AfterEach
+    fun tearDown() {
+        Files.deleteIfExists(Path.of("${System.getProperty("user.dir")}/empty"))
     }
 }
