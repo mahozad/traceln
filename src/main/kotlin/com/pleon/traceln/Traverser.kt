@@ -8,7 +8,7 @@ class Traverser(root: Path) : Iterator<File> {
 
     private var iterator = Files.walk(root).filter { it.toFile().isFile }.iterator()
 
-    override fun hasNext(): Boolean = iterator.hasNext()
+    override fun hasNext() = iterator.hasNext()
 
     override fun next(): File = iterator.next().toFile()
 }

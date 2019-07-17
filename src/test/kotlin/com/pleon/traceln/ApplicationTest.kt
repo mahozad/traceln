@@ -1,28 +1,38 @@
 package com.pleon.traceln
 
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.AfterEach
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import java.nio.file.Path
+import java.io.ByteArrayOutputStream
+import java.io.PrintStream
 
 class ApplicationTest {
 
+    private val outContent = ByteArrayOutputStream()
+    private val originalOut = System.out
+
+    @BeforeEach
+    fun setUp() = System.setOut(PrintStream(outContent))
+
     @Test
     fun countAllFileLinesInPath() {
-        val application = Application()
-        val root = Path.of(javaClass.getResource("/directory").toURI())
+        val root = javaClass.getResource("/directory").path.replaceFirst("/", "")
 
-        val totalLineCount = application.getTotalLineCount(root)
+        main(arrayOf(root))
 
-        assertThat(totalLineCount).isEqualTo(15)
+        assertThat(outContent.toString()).isEqualTo("15")
     }
 
     @Test
     fun countFileLinesInArbitraryDirectory() {
-        val application = Application()
-        val root = Path.of("D:\\Project\\Buyt\\app\\src\\")
+        val root = "D:/Project/Buyt/app/src/"
 
-        val totalLineCount = application.getTotalLineCount(root)
+        main(arrayOf(root))
 
-        assertThat(totalLineCount).isGreaterThan(15_000)
+        assertThat(outContent.toString().toInt()).isGreaterThan(15_000)
     }
+
+    @AfterEach
+    fun tearDown() = System.setOut(originalOut)
 }
