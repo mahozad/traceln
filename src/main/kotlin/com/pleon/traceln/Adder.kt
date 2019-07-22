@@ -117,6 +117,6 @@ class Adder {
 
     fun add(extension: String, lines: Int) {
         val language = language.getOrDefault(extension, "Other")
-        lineCount.merge(language, lines) { i, j -> i + j }
+        lineCount.merge(language, lines) { count, plus -> count + plus }
     }
 }
