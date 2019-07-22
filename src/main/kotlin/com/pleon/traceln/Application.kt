@@ -5,13 +5,13 @@ import java.nio.file.Path
 fun main(args: Array<String>) {
     val traverser = Traverser(Path.of(args[0]))
     val inspector = Inspector()
-    var totalLineCount = 0
+    val adder = Adder()
 
     while (traverser.hasNext()) {
         val file = traverser.next()
         if (inspector.isTextFile(file))
-            totalLineCount += inspector.countLines(file)
+            adder.add(inspector.getExtension(file), inspector.countLines(file))
     }
 
-    print(totalLineCount)
+    print(adder.getMap().toString())
 }

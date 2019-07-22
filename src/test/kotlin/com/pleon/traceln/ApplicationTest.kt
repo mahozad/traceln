@@ -21,16 +21,7 @@ class ApplicationTest {
 
         main(arrayOf(root))
 
-        assertThat(outContent.toString()).isEqualTo("15")
-    }
-
-    @Test
-    fun countFileLinesInArbitraryDirectory() {
-        val root = "D:/Project/Buyt/app/src/"
-
-        main(arrayOf(root))
-
-        assertThat(outContent.toString().toInt()).isGreaterThan(15_000)
+        assertThat(outContent.toString()).contains("15")
     }
 
     @AfterEach

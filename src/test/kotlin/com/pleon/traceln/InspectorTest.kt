@@ -48,6 +48,20 @@ class InspectorTest {
     }
 
     @Test
+    fun getJavaFileExtension() {
+        val file = File(javaClass.getResource("/code.java").toURI())
+
+        assertThat(inspector.getExtension(file)).isEqualTo("java")
+    }
+
+    @Test
+    fun getKotlinFileExtension() {
+        val file = File(javaClass.getResource("/code-kotlin.kt").toURI())
+
+        assertThat(inspector.getExtension(file)).isEqualTo("kt")
+    }
+
+    @Test
     fun countOneJavaFileLines() {
         val file = File(javaClass.getResource("/code.txt").toURI())
 
