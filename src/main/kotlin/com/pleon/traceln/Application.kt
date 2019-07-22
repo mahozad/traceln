@@ -9,8 +9,9 @@ fun main(args: Array<String>) {
 
     while (traverser.hasNext()) {
         val file = traverser.next()
-        if (inspector.isTextFile(file))
+        if (inspector.isTextFile(file)) {
             adder.add(inspector.getType(file), inspector.countLines(file))
+        }
     }
 
     print(adder.getResult().toString())
