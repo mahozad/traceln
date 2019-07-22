@@ -21,6 +21,29 @@ class AdderTest {
     }
 
     @Test
+    fun getResultForTwoJavaFile() {
+        adder.add("java", 10)
+        adder.add("java", 6)
+
+        assertThat(adder.getMap()["Java"]).isEqualTo(16)
+    }
+
+    @Test
+    fun checkMapSizeForOneEntry() {
+        adder.add("java", 10)
+
+        assertThat(adder.getMap().size).isEqualTo(1)
+    }
+
+    @Test
+    fun checkMapSizeForTwoDifferentEntry() {
+        adder.add("java", 10)
+        adder.add("kt", 9)
+
+        assertThat(adder.getMap().size).isEqualTo(2)
+    }
+
+    @Test
     fun getResultForOneKotlinFile() {
         adder.add("kt", 7)
 
