@@ -1,114 +1,15 @@
 package com.pleon.traceln
 
+import java.nio.file.Files
+import java.nio.file.Path
+import kotlin.streams.toList
+
+private val sourcePath = Path.of(Adder::class.java.getResource("/languages.txt").toURI())
+
 class Adder {
 
-    private val language = mapOf(
-        Pair("a", "Ada"),
-        Pair("as", "ActionScript"),
-        Pair("b", "B"),
-        Pair("c", "C"),
-        Pair("h", "C"),
-        Pair("C", "C++"),
-        Pair("cc", "C++"),
-        Pair("cpp", "C++"),
-        Pair("cxx", "C++"),
-        Pair("c++", "C++"),
-        Pair("hh", "C++"),
-        Pair("hpp", "C++"),
-        Pair("hxx", "C++"),
-        Pair("h++", "C++"),
-        Pair("css", "CSS"),
-        Pair("cs", "C#"),
-        Pair("clj", "Clojure"),
-        Pair("cljs", "Clojure"),
-        Pair("cljc", "Clojure"),
-        Pair("edn", "Clojure"),
-        Pair("cbl", "COBOL"),
-        Pair("cob", "COBOL"),
-        Pair("cpy", "COBOL"),
-        Pair("d", "D"),
-        Pair("dart", "Dart"),
-        Pair("e", "Eiffel"),
-        Pair("elm", "Elm"),
-        Pair("erl", "Erlang"),
-        Pair("hrl", "Erlang"),
-        Pair("fs", "F#"),
-        Pair("fsi", "F#"),
-        Pair("fsx", "F#"),
-        Pair("fsscript", "F#"),
-        Pair("f", "Fortran"),
-        Pair("for", "Fortran"),
-        Pair("f90", "Fortran"),
-        Pair("go", "Go"),
-        Pair("groovy", "Groovy"),
-        Pair("gy", "Groovy"),
-        Pair("gvy", "Groovy"),
-        Pair("gsh", "Groovy"),
-        Pair("html", "HTML"),
-        Pair("htm", "HTML"),
-        Pair("hs", "Haskell"),
-        Pair("lhs", "Haskell"),
-        Pair("java", "Java"),
-        Pair("class", "Java"),
-        Pair("jar", "Java"),
-        Pair("js", "JavaScript"),
-        Pair("mjs", "JavaScript"),
-        Pair("jl", "Julia"),
-        Pair("kt", "Kotlin"),
-        Pair("kts", "Kotlin"),
-        Pair("m", "Objective-C"),
-        Pair("M", "Objective-C"),
-        Pair("mm", "Objective-C"),
-        Pair("pp", "Pascal"),
-        Pair("pas", "Pascal"),
-        Pair("inc", "Pascal"),
-        Pair("pl", "Perl"),
-        Pair("pm", "Perl"),
-        Pair("xs", "Perl"),
-        Pair("t", "Perl"),
-        Pair("pod", "Perl"),
-        Pair("php", "PHP"),
-        Pair("phtml", "PHP"),
-        Pair("php3", "PHP"),
-        Pair("php4", "PHP"),
-        Pair("php5", "PHP"),
-        Pair("php7", "PHP"),
-        Pair("phps", "PHP"),
-        Pair("php-s", "PHP"),
-        Pair("pht", "PHP"),
-        Pair("phar", "PHP"),
-        Pair("ps", "PostScript"),
-        Pair("ps1", "PowerShell"),
-        Pair("ps1xml", "PowerShell"),
-        Pair("psc1", "PowerShell"),
-        Pair("psd1", "PowerShell"),
-        Pair("psm1", "PowerShell"),
-        Pair("pssc", "PowerShell"),
-        Pair("cdxml", "PowerShell"),
-        Pair("py", "Python"),
-        Pair("pyc", "Python"),
-        Pair("pyd", "Python"),
-        Pair("pyo", "Python"),
-        Pair("pyw", "Python"),
-        Pair("pyz", "Python"),
-        Pair("r", "R"),
-        Pair("R", "R"),
-        Pair("RData", "R"),
-        Pair("rds", "R"),
-        Pair("rda", "R"),
-        Pair("rb", "Ruby"),
-        Pair("rs", "Rust"),
-        Pair("rlib", "Rust"),
-        Pair("scala", "Scala"),
-        Pair("sc", "Scala"),
-        Pair("sql", "SQL"),
-        Pair("swift", "Swift"),
-        Pair("tex", "TeX"),
-        Pair("ts", "TypeScript"),
-        Pair("tsx", "TypeScript"),
-        Pair("v", "Verilog"),
-        Pair("vh", "Verilog"),
-        Pair("vb", "Visual Basic .NET")
+    private val language = Files.lines(sourcePath).toList().associateBy(
+        { it.substringBefore(':') }, { it.substringAfter(':') }
     )
 
     private val lineCount = mutableMapOf<String, Int>()
@@ -117,6 +18,6 @@ class Adder {
 
     fun add(extension: String, lines: Int) {
         val language = language.getOrDefault(extension, "Other")
-        lineCount.merge(language, lines) { count, plus -> count + plus }
+        lineCount.merge(language, lines) { count, addition -> count + addition }
     }
 }
