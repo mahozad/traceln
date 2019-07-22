@@ -48,17 +48,24 @@ class InspectorTest {
     }
 
     @Test
-    fun getJavaFileExtension() {
+    fun getJavaFileType() {
         val file = File(javaClass.getResource("/code.java").toURI())
 
-        assertThat(inspector.getExtension(file)).isEqualTo("java")
+        assertThat(inspector.getType(file)).isEqualTo("Java")
     }
 
     @Test
-    fun getKotlinFileExtension() {
+    fun getKotlinFileType() {
         val file = File(javaClass.getResource("/code-kotlin.kt").toURI())
 
-        assertThat(inspector.getExtension(file)).isEqualTo("kt")
+        assertThat(inspector.getType(file)).isEqualTo("Kotlin")
+    }
+
+    @Test
+    fun getTextFileType() {
+        val file = File(javaClass.getResource("/code.txt").toURI())
+
+        assertThat(inspector.getType(file)).isEqualTo("Other")
     }
 
     @Test

@@ -15,55 +15,41 @@ class AdderTest {
 
     @Test
     fun getResultForOneJavaFile() {
-        adder.add("java", 10)
+        adder.add("Java", 10)
 
-        assertThat(adder.getMap()["Java"]).isEqualTo(10)
+        assertThat(adder.getResult()["Java"]).isEqualTo(10)
     }
 
     @Test
     fun getResultForTwoJavaFile() {
-        adder.add("java", 10)
-        adder.add("java", 6)
+        adder.add("Java", 10)
+        adder.add("Java", 6)
 
-        assertThat(adder.getMap()["Java"]).isEqualTo(16)
+        assertThat(adder.getResult()["Java"]).isEqualTo(16)
     }
 
     @Test
     fun checkMapSizeForOneEntry() {
-        adder.add("java", 10)
+        adder.add("Java", 10)
 
-        assertThat(adder.getMap().size).isEqualTo(1)
+        assertThat(adder.getResult().size).isEqualTo(1)
     }
 
     @Test
     fun checkMapSizeForTwoDifferentEntry() {
-        adder.add("java", 10)
-        adder.add("kt", 9)
+        adder.add("Java", 10)
+        adder.add("Kotlin", 9)
 
-        assertThat(adder.getMap().size).isEqualTo(2)
-    }
-
-    @Test
-    fun getResultForOneKotlinFile() {
-        adder.add("kt", 7)
-
-        assertThat(adder.getMap()["Kotlin"]).isEqualTo(7)
-    }
-
-    @Test
-    fun getResultForOneTxtFile() {
-        adder.add("txt", 15)
-
-        assertThat(adder.getMap()["Other"]).isEqualTo(15)
+        assertThat(adder.getResult().size).isEqualTo(2)
     }
 
     @Test
     fun getResultForMultipleAdditions() {
-        adder.add("java", 10)
-        adder.add("txt", 15)
-        adder.add("kt", 8)
+        adder.add("Java", 10)
+        adder.add("Other", 15)
+        adder.add("Kotlin", 8)
 
-        assertThat(adder.getMap()["Java"]).isEqualTo(10)
-        assertThat(adder.getMap()["Other"]).isEqualTo(15)
+        assertThat(adder.getResult()["Java"]).isEqualTo(10)
+        assertThat(adder.getResult()["Other"]).isEqualTo(15)
     }
 }
