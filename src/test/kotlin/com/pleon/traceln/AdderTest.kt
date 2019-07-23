@@ -14,10 +14,17 @@ class AdderTest {
     }
 
     @Test
+    fun checkMapSizeForOneEntry() {
+        adder.add("Java", 10)
+
+        assertThat(adder.getResult().size).isEqualTo(1)
+    }
+
+    @Test
     fun getResultForOneJavaFile() {
         adder.add("Java", 10)
 
-        assertThat(adder.getResult()["Java"]).isEqualTo(10)
+        assertThat(adder.getResult()[0].lines).isEqualTo(10)
     }
 
     @Test
@@ -25,14 +32,7 @@ class AdderTest {
         adder.add("Java", 10)
         adder.add("Java", 6)
 
-        assertThat(adder.getResult()["Java"]).isEqualTo(16)
-    }
-
-    @Test
-    fun checkMapSizeForOneEntry() {
-        adder.add("Java", 10)
-
-        assertThat(adder.getResult().size).isEqualTo(1)
+        assertThat(adder.getResult()[0].lines).isEqualTo(16)
     }
 
     @Test
@@ -49,7 +49,14 @@ class AdderTest {
         adder.add("Other", 15)
         adder.add("Kotlin", 8)
 
-        assertThat(adder.getResult()["Java"]).isEqualTo(10)
-        assertThat(adder.getResult()["Other"]).isEqualTo(15)
+        assertThat(adder.getResult()[0].lines).isEqualTo(10)
+        assertThat(adder.getResult()[1].lines).isEqualTo(15)
+    }
+
+    @Test
+    fun getPercentForOneJava() {
+        adder.add("Java", 4)
+
+        assertThat(adder.getResult()[0].percentage).isEqualTo(100.0)
     }
 }

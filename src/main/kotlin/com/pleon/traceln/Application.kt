@@ -14,5 +14,5 @@ fun main(args: Array<String>) {
         }
     }
 
-    print(adder.getResult().toString())
+    print(adder.getResult())
 }
