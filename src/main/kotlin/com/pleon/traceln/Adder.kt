@@ -9,6 +9,6 @@ class Adder {
 
     fun add(type: String, lines: Int) {
         totalLines += lines
-        lineCount.merge(type, lines) { count, addition -> count + addition }
+        lineCount.merge(type, lines, Math::addExact)
     }
 }
