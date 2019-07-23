@@ -6,7 +6,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 import kotlin.streams.toList
 
-private val typesPath = Path.of(Adder::class.java.getResource("/languages.txt").toURI())
+private val typesPath = Path.of(Adder::class.java.getResource("/types.txt").toURI())
 
 class Inspector {
 
