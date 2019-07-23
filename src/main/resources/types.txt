@@ -1,6 +1,9 @@
 a:Ada
 as:ActionScript
 b:B
+bat:Script
+cmd:Script
+btm:Script
 c:C
 h:C
 C:C++
@@ -39,6 +42,8 @@ groovy:Groovy
 gy:Groovy
 gvy:Groovy
 gsh:Groovy
+gradle:Gradle
+gradle.kts:Gradle
 html:HTML
 htm:HTML
 hs:Haskell
@@ -48,12 +53,15 @@ class:Java
 jar:Java
 js:JavaScript
 mjs:JavaScript
+json:JSON
 jl:Julia
 kt:Kotlin
 kts:Kotlin
 m:Objective-C
 M:Objective-C
 mm:Objective-C
+md:Markdown
+markdown:Markdown
 pp:Pascal
 pas:Pascal
 inc:Pascal
@@ -62,6 +70,7 @@ pm:Perl
 xs:Perl
 t:Perl
 pod:Perl
+properties:Properties
 php:PHP
 phtml:PHP
 php3:PHP
@@ -97,10 +106,13 @@ rlib:Rust
 scala:Scala
 sc:Scala
 sql:SQL
+svg:SVG
 swift:Swift
 tex:TeX
+txt:Text
 ts:TypeScript
 tsx:TypeScript
 v:Verilog
 vh:Verilog
 vb:Visual Basic .NE
+xml:XML
