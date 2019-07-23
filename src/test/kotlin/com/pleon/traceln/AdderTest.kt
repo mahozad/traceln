@@ -59,4 +59,12 @@ class AdderTest {
 
         assertThat(adder.getResult()[0].percentage).isEqualTo(100.0)
     }
+
+    @Test
+    fun getPercentForEqualJavaAndKotlin() {
+        adder.add("Java", 13)
+        adder.add("Kotlin", 13)
+
+        assertThat(adder.getResult()[0].percentage).isEqualTo(50.0)
+    }
 }
