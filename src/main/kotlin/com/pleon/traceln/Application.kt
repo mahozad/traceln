@@ -2,8 +2,10 @@ package com.pleon.traceln
 
 import java.nio.file.Path
 
-// For list of official github languages and colors see:
-// [https://github.com/github/linguist/blob/master/lib/linguist/languages.yml]
+// For list of official Github languages and their colors see:
+//  [https://github.com/github/linguist/blob/master/lib/linguist/languages.yml]
+// For how Github language detection works see: [https://github.com/github/linguist]
+// And for using Github REST api see [https://developer.github.com/v3/repos/]
 
 fun main(args: Array<String>) {
     val traverser = Traverser(Path.of(args[0]))
