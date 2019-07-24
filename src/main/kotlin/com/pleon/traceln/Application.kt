@@ -2,6 +2,9 @@ package com.pleon.traceln
 
 import java.nio.file.Path
 
+// For list of official github languages and colors see:
+// [https://github.com/github/linguist/blob/master/lib/linguist/languages.yml]
+
 fun main(args: Array<String>) {
     val traverser = Traverser(Path.of(args[0]))
     val inspector = Inspector()
