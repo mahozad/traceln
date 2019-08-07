@@ -65,7 +65,7 @@ class InspectorTest {
     fun getTextFileType() {
         val file = File(javaClass.getResource("/code.txt").toURI())
 
-        assertThat(inspector.getType(file)).isEqualTo("Other")
+        assertThat(inspector.getType(file)).isEqualTo("Text")
     }
 
     @Test
