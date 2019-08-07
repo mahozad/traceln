@@ -10,7 +10,7 @@ import java.nio.file.Path
 fun main(args: Array<String>) {
     if (args.size != 1) throw Exception("Expected one argument: path to a directory")
 
-    val traverser = Traverser(Path.of(args[0]))
+    val traverser = Traverser(Path.of(args.first()))
     val inspector = Inspector()
     val adder = Adder()
 
