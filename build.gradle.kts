@@ -2,13 +2,29 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm") version "1.3.40"
+    id("application")
+    id("org.openjfx.javafxplugin") version "0.0.5"
 }
 
 group = "com.pleon"
 version = "0.1"
 
 repositories {
+    jcenter()
     mavenCentral()
+}
+
+javafx {
+    version = "12"
+    modules = listOf(
+        "javafx.base", "javafx.controls", "javafx.fxml",
+        "javafx.graphics", "javafx.media", "javafx.web"
+        /*, "javafx.swing", "javafx.swt"*/
+    )
+}
+
+application {
+    mainClassName = "HelloFX"
 }
 
 /**
