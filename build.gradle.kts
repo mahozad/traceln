@@ -9,6 +9,11 @@ plugins {
 group = "com.pleon"
 version = "0.1"
 
+sourceSets {
+    getByName("main").java.srcDirs("src/main/kotlin")
+    getByName("test").java.srcDirs("src/main/kotlin")
+}
+
 repositories {
     jcenter()
     mavenCentral()
@@ -24,7 +29,7 @@ javafx {
 }
 
 application {
-    mainClassName = "HelloFX"
+    mainClassName = "com.pleon.traceln.Main"
 }
 
 /**
