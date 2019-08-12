@@ -16,10 +16,9 @@ fun main(args: Array<String>) {
 }
 
 class Main : Application() {
-
     override fun start(primaryStage: Stage) {
-        val root: Parent = FXMLLoader.load(javaClass.getResource("/fxml/main-scene.fxml"))
-        primaryStage.title = "Hello World"
+        val root: Parent = FXMLLoader.load(javaClass.getResource("/fxml/scene-main.fxml"))
+        primaryStage.title = "Traceln"
         primaryStage.scene = Scene(root, 300.0, 275.0)
         primaryStage.show()
     }

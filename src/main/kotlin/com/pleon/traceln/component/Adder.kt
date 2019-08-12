@@ -1,4 +1,6 @@
-package com.pleon.traceln
+package com.pleon.traceln.component
+
+import com.pleon.traceln.model.Entry
 
 class Adder {
 

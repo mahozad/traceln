@@ -1,4 +1,4 @@
-package com.pleon.traceln
+package com.pleon.traceln.component
 
 import net.sf.jmimemagic.Magic.getMagicMatch
 import java.io.File

@@ -1,5 +1,6 @@
 package com.pleon.traceln
 
+import com.pleon.traceln.component.Inspector
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
