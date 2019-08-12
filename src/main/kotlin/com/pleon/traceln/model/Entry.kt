@@ -1,5 +1,3 @@
 package com.pleon.traceln.model
 
-data class Entry(val name: String, val lines: Int, val percentage: Double) {
-    override fun toString() = "Type: $name\tLines: $lines\tPercentage: $percentage\n"
-}
+data class Entry(val name: String, val lines: Int, val percentage: Double)
