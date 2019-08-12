@@ -13,11 +13,9 @@ class ApplicationTest {
     private val outContent = ByteArrayOutputStream()
     private val originalOut = System.out
 
-    @BeforeEach
-    fun setUp() = System.setOut(PrintStream(outContent))
+    @BeforeEach fun setUp() = System.setOut(PrintStream(outContent))
 
-    @Test
-    fun countAllFileLinesInPath() {
+    @Test fun countAllFileLinesInPath() {
         val root = javaClass.getResource("/directory").path.replaceFirst("/", "")
         val args = arrayOf(root)
 
@@ -26,8 +24,7 @@ class ApplicationTest {
         assertThat(outContent.toString()).contains("15")
     }
 
-    @Test
-    fun runWithNoArgs() {
+    @Test fun runWithNoArgs() {
         val args = emptyArray<String>()
 
         val executable = { main(args) }
@@ -35,8 +32,7 @@ class ApplicationTest {
         assertThrows<Exception>(executable)
     }
 
-    @Test
-    fun runWithMoreThanOneArg() {
+    @Test fun runWithMoreThanOneArg() {
         val args = arrayOf("1", "2")
 
         val executable = { main(args) }
@@ -44,6 +40,5 @@ class ApplicationTest {
         assertThrows<Exception>(executable)
     }
 
-    @AfterEach
-    fun tearDown() = System.setOut(originalOut)
+    @AfterEach fun tearDown() = System.setOut(originalOut)
 }

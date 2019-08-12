@@ -58,16 +58,14 @@ class ExampleTest {
         assertThat(100).isEqualTo(101 - 2 + 1)
     }*/
 
-    @Test
-    fun testMockAsField() {
+    @Test fun testMockAsField() {
         assertThat(mockedUser.name).isEqualTo("Mahdi")
     }
 
     /**
      * You can use `@MockK` and `@RelaxedMockK` on function parameters as well.
      */
-    @Test
-    fun testMockAsMethodParameter(@MockK user: User) {
+    @Test fun testMockAsMethodParameter(@MockK user: User) {
         every { user.age } returns 20
 
         assertThat(user.age).isEqualTo(20)
@@ -77,8 +75,7 @@ class ExampleTest {
      * **Relaxed mock** is a mock that returns some simple value for all functions. This allows to
      * skip specifying behavior for each case, while still allow to stub things you need.
      */
-    @Test
-    fun testRelaxedMockAndNotCalled(@RelaxedMockK user1: User, @MockK user2: User) {
+    @Test fun testRelaxedMockAndNotCalled(@RelaxedMockK user1: User, @MockK user2: User) {
         println(user1.age)
 
         verify { user1.age }
@@ -88,8 +85,7 @@ class ExampleTest {
     /**
      * To revert back object mock, use `unmockkAll` or `unmockkObject` in the tearDown method.
      */
-    @Test
-    fun testMockedObject() {
+    @Test fun testMockedObject() {
         // Arrange
         val util = object {
             fun add() {}
@@ -106,16 +102,14 @@ class ExampleTest {
     /**
      * Spy allows mocking only a particular part of some object.
      */
-    @Test
-    fun testSpy() {
+    @Test fun testSpy() {
         assertThat(spiedUser.name).isEqualTo("Hello!")
     }
 
     /**
      * `unmockkAll` is to revert mocks of singleton objects.
      */
-    @AfterEach
-    fun tearDown() {
+    @AfterEach fun tearDown() {
         println("Teardown method called")
         unmockkAll()
     }

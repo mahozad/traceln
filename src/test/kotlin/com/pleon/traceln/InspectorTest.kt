@@ -11,8 +11,7 @@ class InspectorTest {
 
     private lateinit var inspector: Inspector
 
-    @BeforeEach
-    fun setUp() {
+    @BeforeEach fun setUp() {
         inspector = Inspector()
     }
 
@@ -40,36 +39,31 @@ class InspectorTest {
         assertThat(inspector.isTextFile(file)).isEqualTo(true)
     }
 
-    @Test
-    fun doNotDetectImageFile() {
+    @Test fun doNotDetectImageFile() {
         val file = File(javaClass.getResource("/star.png").toURI())
 
         assertThat(inspector.isTextFile(file)).isEqualTo(false)
     }
 
-    @Test
-    fun getJavaFileType() {
+    @Test fun getJavaFileType() {
         val file = File(javaClass.getResource("/code.java").toURI())
 
         assertThat(inspector.getType(file)).isEqualTo("Java")
     }
 
-    @Test
-    fun getKotlinFileType() {
+    @Test fun getKotlinFileType() {
         val file = File(javaClass.getResource("/code-kotlin.kt").toURI())
 
         assertThat(inspector.getType(file)).isEqualTo("Kotlin")
     }
 
-    @Test
-    fun getTextFileType() {
+    @Test fun getTextFileType() {
         val file = File(javaClass.getResource("/code.txt").toURI())
 
         assertThat(inspector.getType(file)).isEqualTo("Text")
     }
 
-    @Test
-    fun countOneJavaFileLines() {
+    @Test fun countOneJavaFileLines() {
         val file = File(javaClass.getResource("/code.txt").toURI())
 
         val lineCount = inspector.countLines(file)
@@ -77,8 +71,7 @@ class InspectorTest {
         assertThat(lineCount).isEqualTo(6)
     }
 
-    @Test
-    fun countLargeFileLines() {
+    @Test fun countLargeFileLines() {
         val file = File(javaClass.getResource("/code-large.txt").toURI())
 
         val lineCount = inspector.countLines(file)
