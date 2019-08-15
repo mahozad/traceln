@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.3.40"
     id("application")
-    id("org.openjfx.javafxplugin") version "0.0.5"
+    id("org.openjfx.javafxplugin") version "0.0.8"
 }
 
 group = "com.pleon"
