@@ -28,8 +28,9 @@ javafx {
     )
 }
 
-application {
-    mainClassName = "com.pleon.traceln.Main"
+tasks.withType<KotlinCompile> {
+    // Target version of the generated JVM bytecode (1.6, 1.8, 9, 10, 11 or 12), default is 1.6
+    kotlinOptions.jvmTarget = "12"
 }
 
 dependencies {
@@ -40,9 +41,4 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.0")
     testImplementation("org.assertj:assertj-core:3.13.2")
     testImplementation("io.mockk:mockk:1.9.3")
-}
-
-tasks.withType<KotlinCompile> {
-    // Target version of the generated JVM bytecode (1.6, 1.8, 9, 10, 11 or 12), default is 1.6
-    kotlinOptions.jvmTarget = "12"
 }
