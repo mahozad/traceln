@@ -32,14 +32,6 @@ application {
     mainClassName = "com.pleon.traceln.Main"
 }
 
-/**
- * This block is to tell gradle to use its native junit platform. We can also specify some useful
- * things such as excluded tags, etc. here. Currently seems to be not needed.
- */
-/*tasks.named<Test>("test") {
-    useJUnitPlatform()
-}*/
-
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation("net.sf.jmimemagic:jmimemagic:0.1.5")
