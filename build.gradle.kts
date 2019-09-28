@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.3.40"
+    kotlin("jvm") version "1.3.50"
     id("application")
     id("org.openjfx.javafxplugin") version "0.0.8"
 }
@@ -11,7 +11,7 @@ version = "0.1"
 
 sourceSets {
     getByName("main").java.srcDirs("src/main/kotlin")
-    getByName("test").java.srcDirs("src/main/kotlin")
+    getByName("test").java.srcDirs("src/test/kotlin")
 }
 
 repositories {
@@ -21,7 +21,7 @@ repositories {
 
 javafx {
     version = "12"
-    modules = listOf(
+    modules(
         "javafx.base", "javafx.controls", "javafx.fxml",
         "javafx.graphics", "javafx.media", "javafx.web"
         /*, "javafx.swing", "javafx.swt"*/
@@ -50,5 +50,5 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions.jvmTarget = "12"
 }
