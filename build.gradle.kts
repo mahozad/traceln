@@ -23,8 +23,7 @@ javafx {
     version = "13"
     modules(
         "javafx.base", "javafx.controls", "javafx.fxml",
-        "javafx.graphics", "javafx.media", "javafx.web"
-        /*, "javafx.swing", "javafx.swt"*/
+        "javafx.graphics", "javafx.media", "javafx.web", "javafx.swing"
     )
 }
 
