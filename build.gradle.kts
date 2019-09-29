@@ -19,6 +19,10 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClassName = "com.pleon.traceln.Main"
+}
+
 javafx {
     version = "13"
     modules(
