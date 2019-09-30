@@ -21,7 +21,9 @@ class InspectorTest {
     fun detectCodeFile(filePath: String) {
         val file = File(javaClass.getResource(filePath).toURI())
 
-        assertThat(inspector.isTextFile(file)).isEqualTo(true)
+        val inspectionResult = inspector.inspect(file)
+
+        assertThat(inspectionResult.isTextFile).isEqualTo(true)
     }
 
     @ParameterizedTest
@@ -29,7 +31,9 @@ class InspectorTest {
     fun detectCodeFileWithTxtExtension(filePath: String) {
         val file = File(javaClass.getResource(filePath).toURI())
 
-        assertThat(inspector.isTextFile(file)).isEqualTo(true)
+        val inspectionResult = inspector.inspect(file)
+
+        assertThat(inspectionResult.isTextFile).isEqualTo(true)
     }
 
     @ParameterizedTest
@@ -37,46 +41,56 @@ class InspectorTest {
     fun detectRegularTextFile(filePath: String) {
         val file = File(javaClass.getResource(filePath).toURI())
 
-        assertThat(inspector.isTextFile(file)).isEqualTo(true)
+        val inspectionResult = inspector.inspect(file)
+
+        assertThat(inspectionResult.isTextFile).isEqualTo(true)
     }
 
     @Test fun doNotDetectImageFile() {
         val file = File(javaClass.getResource("/star.png").toURI())
 
-        assertThat(inspector.isTextFile(file)).isEqualTo(false)
+        val inspectionResult = inspector.inspect(file)
+
+        assertThat(inspectionResult.isTextFile).isEqualTo(false)
     }
 
     @Test fun getJavaFileType() {
         val file = File(javaClass.getResource("/code.java").toURI())
 
-        assertThat(inspector.getType(file)).isEqualTo("Java")
+        val inspectionResult = inspector.inspect(file)
+
+        assertThat(inspectionResult.type).isEqualTo("Java")
     }
 
     @Test fun getKotlinFileType() {
         val file = File(javaClass.getResource("/code-kotlin.kt").toURI())
 
-        assertThat(inspector.getType(file)).isEqualTo("Kotlin")
+        val inspectionResult = inspector.inspect(file)
+
+        assertThat(inspectionResult.type).isEqualTo("Kotlin")
     }
 
     @Test fun getTextFileType() {
         val file = File(javaClass.getResource("/code.txt").toURI())
 
-        assertThat(inspector.getType(file)).isEqualTo("Text")
+        val inspectionResult = inspector.inspect(file)
+
+        assertThat(inspectionResult.type).isEqualTo("Text")
     }
 
     @Test fun countOneJavaFileLines() {
         val file = File(javaClass.getResource("/code.txt").toURI())
 
-        val lineCount = inspector.countLines(file)
+        val inspectionResult = inspector.inspect(file)
 
-        assertThat(lineCount).isEqualTo(6)
+        assertThat(inspectionResult.lineCount).isEqualTo(6)
     }
 
     @Test fun countLargeFileLines() {
         val file = File(javaClass.getResource("/code-large.txt").toURI())
 
-        val lineCount = inspector.countLines(file)
+        val inspectionResult = inspector.inspect(file)
 
-        assertThat(lineCount).isEqualTo(120)
+        assertThat(inspectionResult.lineCount).isEqualTo(120)
     }
 }
