@@ -8,12 +8,16 @@ import kotlin.streams.toList
 
 class Inspector {
 
+    inner class InspectionResult(val isTextFile: Boolean, val type: String, val lineCount: Int)
+
     private val type = Files.lines(Path.of(javaClass.getResource("/types.txt").toURI()))
         .toList().associateBy({ it.substringBefore(':') }, { it.substringAfter(':') })
 
-    fun isTextFile(file: File) = getMagicMatch(file, true).mimeType.contains("text")
+    fun inspect(file: File) = InspectionResult(isTextFile(file), type(file), lineCount(file))
 
-    fun countLines(file: File) = file.readLines().size
+    private fun isTextFile(file: File) = getMagicMatch(file, true).mimeType.contains("text")
 
-    fun getType(file: File) = type.getOrDefault(file.name.substringAfter('.'), "Other")
+    private fun type(file: File) = type.getOrDefault(file.name.substringAfter('.'), "Other")
+
+    private fun lineCount(file: File) = file.readLines().size
 }

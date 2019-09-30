@@ -10,11 +10,9 @@ class Tracer {
         val inspector = Inspector()
         val adder = Adder()
 
-        while (traverser.hasNext()) {
-            val file = traverser.next()
-            if (inspector.isTextFile(file)) {
-                adder.add(inspector.getType(file), inspector.countLines(file))
-            }
+        for (file in traverser) {
+            val result = inspector.inspect(file)
+            if (result.isTextFile) adder.add(result.type, result.lineCount)
         }
 
         return adder.getResult()
