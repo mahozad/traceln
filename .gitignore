@@ -1,0 +1,12 @@
+### General ###
+app-settings.properties
+
+### Gradle ###
+.gradle
+/build/
+
+### IntelliJ IDEA ###
+/out/
+*.iws
+*.iml
+*.ipr
