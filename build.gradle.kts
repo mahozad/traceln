@@ -31,9 +31,28 @@ javafx {
     )
 }
 
+tasks.withType<Wrapper> {
+    // Add a gradle wrapper script to your source folders (by running the wrapper task).
+    // The wrapper script when invoked, downloads the defined gradle version, and executes it.
+    // By distributing the wrapper with your project, anyone can work with it without needing to install Gradle beforehand
+    gradleVersion = "5.5"
+}
+
+tasks.withType<Jar> {
+    // Define main class in the manifest of output jar file when generating one
+    manifest.attributes("Main-Class" to "com.pleon.traceln.MainKt")
+}
+
 tasks.withType<KotlinCompile> {
     // Target version of the generated JVM bytecode (1.6, 1.8, 9, 10, 11 or 12), default is 1.6
     kotlinOptions.jvmTarget = "12"
+}
+
+tasks.withType<Test> {
+    // Even though Gradle 4.6 (and newer versions) has a native support for JUnit 5,
+    // this support is not enabled by default. If we want to enable it,
+    // we have to ensure that the test task uses JUnit 5 instead of JUnit 4.
+    useJUnitPlatform()
 }
 
 dependencies {
@@ -42,6 +61,7 @@ dependencies {
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.5.0") // For gradle test task
     testImplementation("org.assertj:assertj-core:3.13.2")
     testImplementation("io.mockk:mockk:1.9.3")
 }
