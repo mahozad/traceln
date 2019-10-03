@@ -9,8 +9,8 @@ import java.nio.file.Path
 
 class TraverserTest {
 
-    private val fileAsRoot = Path.of(javaClass.classLoader.getResource("directory/file.txt")!!.toURI())
-    private val dirAsRoot = Path.of(javaClass.classLoader.getResource("directory")!!.toURI())
+    private val fileAsRoot = Path.of(javaClass.getResource("/directory/file.txt").toURI())
+    private val dirAsRoot = Path.of(javaClass.getResource("/directory").toURI())
 
     @Test fun withDirectoryAsRootHasNextShouldReturnTrue() {
         val traverser = Traverser(dirAsRoot)
