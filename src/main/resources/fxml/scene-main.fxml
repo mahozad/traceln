@@ -14,6 +14,7 @@
               title="Code Composition"
               labelsVisible="false"
               GridPane.columnSpan="2"
+              prefHeight="700"
               GridPane.rowIndex="0"/>
 
     <TextField fx:id="pathTextField"
