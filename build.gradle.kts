@@ -4,6 +4,7 @@ plugins {
     kotlin("jvm") version "1.3.50"
     id("application")
     id("org.openjfx.javafxplugin") version "0.0.8"
+    id("jacoco") // for generating code coverage for codecov.io
 }
 
 group = "com.pleon"
@@ -53,6 +54,17 @@ tasks.withType<Test> {
     // this support is not enabled by default. If we want to enable it,
     // we have to ensure that the test task uses JUnit 5 instead of JUnit 4.
     useJUnitPlatform()
+}
+
+// for generating code coverage for codecov.io
+tasks.named("check") { dependsOn("jacocoTestReport") }
+tasks.withType<JacocoReport> {
+    reports {
+        xml.isEnabled = true
+        csv.isEnabled = true
+        html.isEnabled = true
+        // html.destination = File("${buildDir}/reports/jacoco/html")
+    }
 }
 
 dependencies {

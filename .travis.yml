@@ -1,2 +1,6 @@
 language: java
 jdk: oraclejdk12
+
+# Whenever a build succeeds, this line uploads the JaCoCo report to Codecov
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
