@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.3.50"
+    kotlin("jvm") version "1.4.30"
     id("application")
     id("org.openjfx.javafxplugin") version "0.0.8"
     id("jacoco") // for generating code coverage for codecov.io
@@ -36,7 +36,7 @@ tasks.withType<Wrapper> {
     // Add a gradle wrapper script to your source folders (by running the wrapper task).
     // The wrapper script when invoked, downloads the defined gradle version, and executes it.
     // By distributing the wrapper with your project, anyone can work with it without needing to install Gradle beforehand
-    gradleVersion = "5.5"
+    gradleVersion = "6.6"
 }
 
 tasks.withType<Jar> {
@@ -74,6 +74,6 @@ dependencies {
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.0")
     testRuntime("org.junit.jupiter:junit-jupiter-engine:5.5.0") // For gradle test task
-    testImplementation("org.assertj:assertj-core:3.13.2")
-    testImplementation("io.mockk:mockk:1.9.3")
+    testImplementation("org.assertj:assertj-core:3.19.0")
+    testImplementation("io.mockk:mockk:1.10.5")
 }
