@@ -6,9 +6,12 @@ import java.nio.file.Path
 
 class Traverser(root: Path) : Iterator<File> {
 
-    private var iterator = Files.walk(root).filter { it.toFile().isFile }.iterator()
+    private var iterator = Files.walk(root)
+        .map(Path::toFile)
+        .filter(File::isFile)
+        .iterator()
 
     override fun hasNext() = iterator.hasNext()
 
-    override fun next(): File = iterator.next().toFile()
+    override fun next(): File = iterator.next()
 }
