@@ -68,7 +68,6 @@ tasks.withType<JacocoReport> {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     implementation("net.sf.jmimemagic:jmimemagic:0.1.5")
     testImplementation(kotlin("test"))
     testImplementation(kotlin("test-junit5"))
